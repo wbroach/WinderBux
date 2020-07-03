@@ -15,4 +15,5 @@ public class Block {
 		this.previousHash = previousHash;
 		this.timeStamp = new Date().getTime();
 	}
+    
 }
