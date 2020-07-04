@@ -10,17 +10,19 @@ public class Block {
     private long timeStamp; //as number of milliseconds since 1/1/1970.
     
     //Block Constructor.
-    public Block(String data,String previousHash ) {
+    public Block(String data,String previousHash) {
 	this.data = data;
 	this.previousHash = previousHash;
 	this.timeStamp = new Date().getTime();
+	// must be set after other items instantiated 
+	this.hash = calculateHash(); 
     }
     
     
     public String calculateHash() {
 	StringBuffer buf = new StringBuffer(previousHash)
-	                      .append(Long.toString(timeStamp)
-			      .append(data); 
+	                          .append(Long.toString(timeStamp))
+	                          .append(data); 
 	
 	return StringUtil.applySha256(buf.toString());
     }
